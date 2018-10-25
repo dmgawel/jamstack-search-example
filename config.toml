@@ -1,0 +1,18 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "JAMstack Lambda Search"
+
+theme = "hugo-paper"
+
+
+[outputFormats.Search]
+baseName = "search"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.search]
+vars = ["title", "summary", "date", "permalink"]
+
+[outputs]
+home = ["HTML", "RSS", "Search"]

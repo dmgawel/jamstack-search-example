@@ -1,0 +1,19 @@
+{
+  "name": "ssg-lambda-search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "hugo && node build-search.js && netlify-lambda build functions",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "netlify-lambda": "^1.0.2"
+  },
+  "dependencies": {
+    "lunr": "^2.3.4"
+  }
+}

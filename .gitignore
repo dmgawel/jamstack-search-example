@@ -1,0 +1,4 @@
+.netlify/
+public/
+node_modules/
+searchIndex.json

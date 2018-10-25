@@ -1,0 +1,31 @@
+{{ partial "header.html" . }}
+
+{{ $paginator := .Paginate (where .Pages ".Params.type" "!=" "page") (index .Site.Params "paginate" | default 3) }}
+{{ if gt $paginator.TotalPages 0 }}
+{{ range $index, $page := $paginator.Pages }}
+<article class="post post-entry">
+  <header class="post-header">
+    {{ safeHTML (.Scratch.Get `firstEmoji`) }}
+    <h2 class="post-title">{{ .Title }}</h2>
+  </header>
+  <p class="post-summary">{{ .Summary | plainify | htmlUnescape }}...</p>
+  <footer class="post-footer">
+    <p class="post-meta">{{ .Date.Format "2006.1.2" }}</p>
+  </footer>
+  <a class="post-link" href="{{ .Permalink }}"></a>
+</article>
+{{ end }}
+{{ end }}
+{{ if gt $paginator.TotalPages 1 }}
+<footer class="list-footer">
+  <nav class="pagination">
+    {{ if $paginator.HasPrev }}
+    <a class="pagination-prev" href="{{ $paginator.Prev.URL }}">← {{ i18n "prevPage" }}</a>
+    {{ end }}
+    {{ if $paginator.HasNext }}
+    <a class="pagination-next" href="{{ $paginator.Next.URL }}">{{ i18n "nextPage" }} →</a>
+    {{ end }}
+  </nav>
+</footer>
+{{ end }}
+{{ partial "footer.html" . }}
